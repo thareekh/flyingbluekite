@@ -1,0 +1,61 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero">
+    <p class="hero-subtitle">Carried by the winds of thought</p>
+    <h1 class="hero-title">Flying Blue Kite</h1>
+    <p class="hero-description">A collection of stories, musings, and poetry by a wandering mind. Connected to no strings, exploring the endless possibility of words and worlds.</p>
+    <a href="#stories" class="btn btn-primary">Explore Stories <i class="fas fa-arrow-down"></i></a>
+</section>
+
+<section id="stories" class="blog-grid">
+    {% for post in site.posts %}
+    <article class="blog-card" onclick="window.location.href='{{ post.url | relative_url }}'">
+        {% if post.image %}
+        <div class="card-image">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+            {% if post.tags %}
+            <span class="card-category">{{ post.tags[0] }}</span>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="card-content">
+            <div class="card-date">{{ post.date | date: "%B %d, %Y" }}</div>
+            <h2 class="card-title">{{ post.title }}</h2>
+            <p class="card-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+            <div class="card-read-time">
+                <i class="far fa-clock"></i>
+                {% assign words = post.content | number_of_words %}
+                {{ words | divided_by: 200 | at_least: 1 }} min read
+            </div>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Newer Posts
+    </a>
+    {% endif %}
+
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}" class="btn btn-secondary">
+        Older Posts <i class="fas fa-arrow-right"></i>
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+
+<style>
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem 2rem;
+}
+</style>

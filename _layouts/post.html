@@ -1,0 +1,149 @@
+---
+layout: default
+---
+
+<article class="post">
+    <header class="post-header">
+        <div class="post-meta">
+            <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
+            <span class="post-read-time">{% assign words = content | number_of_words %}{{ words | divided_by: 200 | at_least: 1 }} min read</span>
+            {% if page.tags %}
+            <span class="post-tags">
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </span>
+            {% endif %}
+        </div>
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="post-description">{{ page.description }}</p>
+        {% endif %}
+    </header>
+
+    {% if page.image %}
+    <div class="post-cover">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+    </div>
+    {% endif %}
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+
+    <footer class="post-footer">
+        <div class="post-share">
+            <h4>Share this story</h4>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | url_encode }}" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+
+        <div class="post-nav">
+            {% if page.previous.url %}
+            <a href="{{ page.previous.url | relative_url }}" class="post-nav-prev">
+                <span>Previous Story</span>
+                <strong>{{ page.previous.title }}</strong>
+            </a>
+            {% endif %}
+
+            {% if page.next.url %}
+            <a href="{{ page.next.url | relative_url }}" class="post-nav-next">
+                <span>Next Story</span>
+                <strong>{{ page.next.title }}</strong>
+            </a>
+            {% endif %}
+        </div>
+    </footer>
+</article>
+
+<style>
+.post-footer {
+    max-width: 700px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.post-share {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--bg-accent);
+    border-radius: 12px;
+}
+
+.post-share h4 {
+    margin-bottom: 1rem;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+}
+
+.post-nav a {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.post-nav a span {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.post-nav a strong {
+    color: var(--text-primary);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+}
+
+.post-nav a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--shadow);
+    border-color: var(--accent);
+}
+
+.post-nav-prev {
+    text-align: left;
+}
+
+.post-nav-next {
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    .post-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .post-nav-prev,
+    .post-nav-next {
+        text-align: left;
+    }
+}
+</style>

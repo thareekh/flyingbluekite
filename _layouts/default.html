@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% if page.title %}{{ page.title | escape }} | {{ site.title }}{% else %}{{ site.title | escape }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪁</text></svg>">
+
+    {% seo %}
+</head>
+<body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="{{ '/' | relative_url }}" class="nav-logo">
+                <span class="logo-icon">🪁</span>
+                <span class="logo-text">Flying Blue Kite</span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+                <a href="{{ '/about' | relative_url }}" class="nav-link">About</a>
+                <a href="{{ '/generator' | relative_url }}" class="nav-link">AI Writer</a>
+                <a href="https://instagram.com/{{ site.instagram }}" target="_blank" class="nav-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+            <div class="nav-controls">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {{ content }}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Flying Blue Kite</h3>
+                <p>Carried by the winds of thought and endless possibility.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/{{ site.instagram }}" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                        <span>@{{ site.instagram }}</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="{{ '/' | relative_url }}">All Stories</a></li>
+                    <li><a href="{{ '/about' | relative_url }}">About Me</a></li>
+                    <li><a href="{{ '/generator' | relative_url }}">AI Story Generator</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <p>Follow the journey on Instagram for daily musings and behind-the-scenes moments.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ 'now' | date: "%Y" }} Flying Blue Kite. All rights reserved.</p>
+            <p class="made-with">Made with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

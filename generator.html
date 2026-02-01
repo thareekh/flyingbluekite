@@ -1,0 +1,51 @@
+---
+layout: default
+title: AI Story Generator
+description: Generate daily stories inspired by the Flying Blue Kite style
+---
+
+<section class="generator-section">
+    <h1>AI Story Generator</h1>
+    <p>Based on my existing stories, themes, and writing style, this tool generates new daily posts. Let the algorithm continue the wandering when the kite is resting.</p>
+
+    <div class="generator-box">
+        <form id="generator-form">
+            <div class="input-group">
+                <label for="post-count">Number of Stories to Generate</label>
+                <select id="post-count" name="count">
+                    <option value="3">3 Stories</option>
+                    <option value="5" selected>5 Stories (Daily Pack)</option>
+                    <option value="7">7 Stories (Weekly Pack)</option>
+                    <option value="10">10 Stories</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="theme-focus">Preferred Theme (Optional)</label>
+                <select id="theme-focus" name="theme">
+                    <option value="">Random Mix (Recommended)</option>
+                    <option value="travel">Travel & Adventures</option>
+                    <option value="philosophy">Philosophy & Reflection</option>
+                    <option value="poetry">Poetry & Prose</option>
+                    <option value="social">Social Commentary</option>
+                    <option value="personal">Personal Reflection</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                <i class="fas fa-sparkles"></i> Generate New Stories
+            </button>
+        </form>
+    </div>
+</section>
+
+<section class="generated-posts">
+    <h2 class="text-center">Your Generated Stories</h2>
+    <div id="generated-posts" class="posts-grid">
+        <!-- Posts will be generated here by JavaScript -->
+    </div>
+</section>
+
+<div style="max-width: 800px; margin: 2rem auto; padding: 0 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+    <p><i class="fas fa-info-circle"></i> Note: These stories are algorithmically generated based on themes and patterns from my existing writing. They capture the style and essence but are created by code, not consciousness.</p>
+</div>
