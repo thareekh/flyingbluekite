@@ -5,7 +5,7 @@ baseurl: "" # leave empty for root domain
 url: "https://flyingbluekite.github.io" # your GitHub Pages URL
 author: "Thareekh"
 instagram: "thareeekh"
-email: your-thareekhakk@proton.me
+email: thareekhakk@proton.me
 
 # Build settings
 markdown: kramdown
